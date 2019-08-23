@@ -21,6 +21,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Call the End/Begin camera rendering callbacks for camera with customRender enabled
 - Changeg framesettings migration order of postprocess flags as a pr for reflection settings flags have been backported to 2019.2
 
+## Added
+- Raytracing ShaderGraph node for HDRP shaders
+
 ## [7.0.1] - 2019-07-25
 
 ### Added
