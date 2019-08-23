@@ -9,7 +9,7 @@ namespace UnityEditor.Rendering.HighDefinition
     [FormerName("UnityEditor.Experimental.Rendering.HDPipeline.HDLitSubShader")]
     class HDLitSubShader : IHDLitSubShader
     {
-        static string DefineRaytracingKeyword(RayTracingNode.RaytracingVariant variant)
+        internal static string DefineRaytracingKeyword(RayTracingNode.RaytracingVariant variant)
             => $"#define {RayTracingNode.RaytracingVariantKeyword(variant)}";
 
         Pass m_PassGBuffer = new Pass()
@@ -30,6 +30,7 @@ namespace UnityEditor.Rendering.HighDefinition
                 "#pragma multi_compile _ SHADOWS_SHADOWMASK",
                 "#pragma multi_compile DECALS_OFF DECALS_3RT DECALS_4RT",
                 "#pragma multi_compile _ LIGHT_LAYERS",
+                DefineRaytracingKeyword(RayTracingNode.RaytracingVariant.High),
             },
             Includes = new List<string>()
             {
@@ -105,6 +106,10 @@ namespace UnityEditor.Rendering.HighDefinition
             {
                 "#include \"Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPassLightTransport.hlsl\"",
             },
+            ExtraDefines = new List<string>()
+            {
+                DefineRaytracingKeyword(RayTracingNode.RaytracingVariant.High),
+            },
             RequiredFields = new List<string>()
             {
                 "AttributesMesh.normalOS",
@@ -159,6 +164,10 @@ namespace UnityEditor.Rendering.HighDefinition
             ZClipOverride = HDSubShaderUtilities.zClipShadowCaster,
             CullOverride = HDSubShaderUtilities.defaultCullMode,
             ZWriteOverride = HDSubShaderUtilities.zWriteOn,
+            ExtraDefines = new List<string>()
+            {
+                DefineRaytracingKeyword(RayTracingNode.RaytracingVariant.High),
+            },
             Includes = new List<string>()
             {
                 "#include \"Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPassDepthOnly.hlsl\"",
@@ -189,6 +198,7 @@ namespace UnityEditor.Rendering.HighDefinition
             {
                 "#define SCENESELECTIONPASS",
                 "#pragma editor_sync_compilation",
+                DefineRaytracingKeyword(RayTracingNode.RaytracingVariant.High),
             },
             Includes = new List<string>()
             {
@@ -323,6 +333,10 @@ namespace UnityEditor.Rendering.HighDefinition
             MaterialName = "Lit",
             ShaderPassName = "SHADERPASS_DISTORTION",
             ZWriteOverride = HDSubShaderUtilities.zWriteOff,
+            ExtraDefines = new List<string>()
+            {
+                DefineRaytracingKeyword(RayTracingNode.RaytracingVariant.High),
+            },
             Includes = new List<string>()
             {
                 "#include \"Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPassDistortion.hlsl\"",
@@ -396,6 +410,7 @@ namespace UnityEditor.Rendering.HighDefinition
             ExtraDefines = new List<string>()
             {
                 "#define CUTOFF_TRANSPARENT_DEPTH_PREPASS",
+                DefineRaytracingKeyword(RayTracingNode.RaytracingVariant.High),
             },
             Includes = new List<string>()
             {
@@ -491,6 +506,10 @@ namespace UnityEditor.Rendering.HighDefinition
             {
                 "#include \"Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPassForward.hlsl\"",
             },
+            ExtraDefines = new List<string>()
+            {
+                DefineRaytracingKeyword(RayTracingNode.RaytracingVariant.High),
+            },
             RequiredFields = new List<string>()
             {
                 "FragInputs.tangentToWorld",
@@ -567,6 +586,7 @@ namespace UnityEditor.Rendering.HighDefinition
             ExtraDefines = new List<string>()
             {
                 "#define CUTOFF_TRANSPARENT_DEPTH_POSTPASS",
+                DefineRaytracingKeyword(RayTracingNode.RaytracingVariant.High),
             },
             Includes = new List<string>()
             {

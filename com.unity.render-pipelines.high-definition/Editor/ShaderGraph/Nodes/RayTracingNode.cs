@@ -37,7 +37,7 @@ namespace UnityEditor.Rendering.HighDefinition
                 displayName = "Raytracing",
                 referenceName = "RAYTRACING_SHADER_GRAPH",
                 type = KeywordType.Enum,
-                definition = KeywordDefinition.ShaderFeature,
+                definition = KeywordDefinition.Predefined,
                 scope = KeywordScope.Global,
                 value = 0,
                 entries = new List<KeywordEntry>()
